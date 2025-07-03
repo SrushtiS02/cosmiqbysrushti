@@ -17,8 +17,15 @@
       "dest": "/api/index.js"
     },
     {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/frontend/build/static/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/frontend/build/index.html"
     }
   ]
 }
