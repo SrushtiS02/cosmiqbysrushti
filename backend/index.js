@@ -10,27 +10,33 @@ const neoRouter     = require('./routes/neo');
 const libraryRouter = require('./routes/library');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// 1) global middleware
+// 1) Global middleware
 app.use(cors());
 app.use(express.json());
 
-// 2) health check
+// 2) Health check
 app.get('/', (req, res) => res.send('CosmiQ backend is live! 🚀'));
 
-// 3) mount your APIs *before* the 404 logger
+// 3) Mount your APIs *before* the 404 handler
 app.use('/api/apod',    apodRouter);
 app.use('/api/epic',    epicRouter);
 app.use('/api/neo',     neoRouter);
 app.use('/api/library', libraryRouter);
 
-// 4) catch-all 404 for anything else
+// 4) Catch-all 404 for anything else
 app.use((req, res) => {
-  console.log(`⚠️  404: ${req.method} ${req.originalUrl}`);
+  console.warn(`⚠️  404: ${req.method} ${req.originalUrl}`);
   res.status(404).send(`Cannot ${req.method} ${req.originalUrl}`);
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Backend listening on port ${PORT}`);
-});
+// 5) Only start server when this file is run directly
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Backend listening on port ${PORT}`);
+  });
+}
+
+// Export the app for use as a Vercel Serverless Function
+module.exports = app;
