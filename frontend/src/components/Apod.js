@@ -1,4 +1,4 @@
-// frontend/src/components/Apod.js
+// src/components/Apod.js
 
 import React, { useState, useEffect } from 'react';
 import './Apod.css';
@@ -9,16 +9,25 @@ export default function Apod() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Use your NASA API key from env or fallback to DEMO_KEY
+  const API_KEY = process.env.REACT_APP_NASA_API_KEY || 'DEMO_KEY';
+  const BASE_URL = 'https://api.nasa.gov/planetary/apod';
+
   const fetchApod = async selectedDate => {
     setLoading(true);
     setError(null);
     try {
-      const query = selectedDate ? `?date=${selectedDate}` : '';
-      const res = await fetch(`/api/apod${query}`);
+      const query = [];
+      query.push(`api_key=${API_KEY}`);
+      if (selectedDate) query.push(`date=${selectedDate}`);
+      const url = `${BASE_URL}?${query.join('&')}`;
+
+      const res = await fetch(url);
       if (!res.ok) throw new Error(`Status ${res.status}`);
       const data = await res.json();
       setApod(data);
     } catch (err) {
+      console.error('APOD fetch error:', err);
       setError(err.message);
     } finally {
       setLoading(false);

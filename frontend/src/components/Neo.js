@@ -8,14 +8,25 @@ export default function Neo() {
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(null);
 
+  // NASA NEO Feed endpoint for today's asteroids
+  const API_KEY = process.env.REACT_APP_NASA_API_KEY || 'DEMO_KEY';
+  const today   = new Date().toISOString().split('T')[0];
+  const FEED_URL = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${today}&end_date=${today}&api_key=${API_KEY}`;
+
   useEffect(() => {
-    fetch('/api/neo')
+    fetch(FEED_URL)
       .then(res => {
         if (!res.ok) throw new Error(`Status ${res.status}`);
         return res.json();
       })
-      .then(setNeos)
-      .catch(err => setError(err.message))
+      .then(data => {
+        const todaysNeos = data.near_earth_objects[today] || [];
+        setNeos(todaysNeos);
+      })
+      .catch(err => {
+        console.error('NEO fetch error:', err);
+        setError(err.message);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -30,7 +41,7 @@ export default function Neo() {
       </h2>
       <div className="neo-grid">
         {neos.map(neo => {
-          const dia      = neo.estimated_diameter.meters;
+          const { meters: dia } = neo.estimated_diameter;
           const approach = neo.close_approach_data[0];
           return (
             <div key={neo.id} className="neo-item">

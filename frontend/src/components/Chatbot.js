@@ -1,5 +1,8 @@
+// src/components/Chatbot.js
 import React, { useState } from 'react';
 import './Chatbot.css';
+
+const API_BASE = process.env.REACT_APP_API_URL;
 
 export default function Chatbot() {
   const [input, setInput] = useState('');
@@ -14,14 +17,16 @@ export default function Chatbot() {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg.text }),
       });
+      if (!res.ok) throw new Error(`Status ${res.status}`);
       const { reply } = await res.json();
       setHistory(h => [...h, { from: 'bot', text: reply }]);
     } catch (err) {
+      console.error('Chatbot error:', err);
       setHistory(h => [...h, { from: 'bot', text: '❌ Error: could not reach AI.' }]);
     } finally {
       setLoading(false);
