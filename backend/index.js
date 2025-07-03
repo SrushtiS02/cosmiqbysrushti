@@ -30,7 +30,7 @@ app.use((req, res) => {
   res.status(404).send(`Cannot ${req.method} ${req.originalUrl}`);
 });
 
-// 5) Only start server when this file is run directly
+// 5) Only start server when this file is run directly (local dev)
 if (require.main === module) {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
