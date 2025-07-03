@@ -1,12 +1,8 @@
+// src/pages/Home.js
+
 import React from 'react';
+import Home from '../components/Home';
 
-const Home = () => {
-  return (
-    <div>
-      <h1>Welcome to CosmiQ</h1>
-      <p>Choose a NASA service to explore</p>
-    </div>
-  );
-};
-
-export default Home;
+export default function HomePage() {
+  return <Home />;
+}
