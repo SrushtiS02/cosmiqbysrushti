@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap');
+
+/* Ensure dark full-page background */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #050A30; /* Space dark blue */
+  background: linear-gradient(to bottom right, #050A30, #0B1E3F);
+  overflow-x: hidden;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+/* Enlarged background Lottie animation */
+.background-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 700px;
+  height: 700px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: slow-spin 40s linear infinite;
+}
+
+@keyframes slow-spin {
+  from {
+    transform: translate(-50%, -60%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -60%) rotate(360deg);
+  }
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #ffc9de; /* Pastel pink */
+  margin: 0.5em 0;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #ffd6a5; /* Pastel peach */
+  margin-bottom: 1.5em;
+  min-height: 2em;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2.5em;
+  z-index: 1;
+}
+
+.nav-button {
+  background-color: #caffbf; /* Pastel mint green */
+  color: #1a1a1a;
+  padding: 0.7em 1.6em;
+  border-radius: 30px;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s;
+  z-index: 1;
+}
+
+.nav-button:hover {
+  background-color: #bdb2ff; /* Pastel purple */
+  transform: scale(1.05);
+}

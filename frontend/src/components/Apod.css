@@ -1,0 +1,85 @@
+/* Apod.css */
+
+/* Controls */
+.apod-controls {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.apod-controls input[type="date"] {
+  padding: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #bdb2ff;
+}
+
+/* Main container */
+.apod-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: #e0f0ff;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+}
+.apod-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #ffc9de;
+}
+.apod-date {
+  color: #bdb2ff;
+  margin-bottom: 1rem;
+}
+.apod-image,
+.apod-video {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+.apod-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #caffbf;
+}
+
+/* Tablet (≤900px) */
+@media screen and (max-width: 900px) {
+  .apod-container {
+    padding: 1.5rem;
+  }
+  .apod-title {
+    font-size: 1.6rem;
+  }
+  .apod-description {
+    font-size: 1rem;
+  }
+  .apod-image,
+  .apod-video {
+    max-height: 350px;
+  }
+}
+
+/* Mobile (≤600px) */
+@media screen and (max-width: 600px) {
+  .apod-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .apod-title {
+    font-size: 1.4rem;
+  }
+  .apod-date {
+    font-size: 0.9rem;
+  }
+  .apod-description {
+    font-size: 0.9rem;
+  }
+  .apod-image,
+  .apod-video {
+    max-height: 250px;
+  }
+}

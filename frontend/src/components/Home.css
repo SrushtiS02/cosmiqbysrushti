@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap');
+
+/* Home page container fills the screen with a dark translucent overlay */
+.home-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  background-color: #1A2F5B;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(26, 47, 91, 0.8),
+      rgba(16, 37, 76, 0.8)
+    );
+  background-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Lottie back-animation */
+.background-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 700px;
+  height: 700px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: slow-spin 40s linear infinite;
+}
+@keyframes slow-spin {
+  from { transform: translate(-50%, -60%) rotate(0deg); }
+  to   { transform: translate(-50%, -60%) rotate(360deg); }
+}
+
+/* Titles & Buttons */
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #ffc9de;
+  margin: 0.5em 0;
+  z-index: 1;
+}
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #ffd6a5;
+  margin-bottom: 1.5em;
+  z-index: 1;
+}
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2.5em;
+  z-index: 1;
+}
+.nav-button {
+  background-color: #caffbf;
+  color: #1a1a1a;
+  padding: 0.7em 1.6em;
+  border-radius: 30px;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s;
+  z-index: 1;
+}
+.nav-button:hover {
+  background-color: #bdb2ff;
+  transform: scale(1.05);
+}
+
+/* Tablet (≤900px) */
+@media screen and (max-width: 900px) {
+  .home-container {
+    padding: 1.5rem;
+  }
+  .background-animation {
+    width: 500px;
+    height: 500px;
+  }
+  .title {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+  }
+  .nav-button {
+    font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+    padding: 0.6em 1.4em;
+  }
+}
+
+/* Mobile (≤600px) */
+@media screen and (max-width: 600px) {
+  .home-container {
+    padding: 1rem;
+  }
+  .background-animation {
+    width: 300px;
+    height: 300px;
+  }
+  .title {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+  .subtitle {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+  }
+  .button-group {
+    gap: 0.5rem;
+  }
+  .nav-button {
+    font-size: clamp(0.7rem, 3vw, 1rem);
+    padding: 0.5em 1.2em;
+  }
+}

@@ -1,0 +1,76 @@
+/* Neo.css */
+
+.neo-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+.neo-title {
+  font-family: 'Orbitron', sans-serif;
+  color: #ffc9de;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.neo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+.neo-item {
+  background: rgba(5, 10, 48, 0.6);
+  color: #e0f0ff;
+  border-radius: 12px;
+  padding: 1rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  width: 100%;
+}
+.neo-name {
+  font-size: 1.1rem;
+  color: #ffd6a5;
+  margin-bottom: 0.5rem;
+}
+.neo-size,
+.neo-date {
+  font-size: 0.9rem;
+  color: #caffbf;
+  margin: 0.3rem 0;
+}
+.neo-hazard {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+.neo-hazard.hazard {
+  color: #ff8b94;
+}
+
+/* Tablet (≤900px) */
+@media screen and (max-width: 900px) {
+  .neo-container {
+    padding: 1.5rem;
+  }
+  .neo-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile (≤600px) */
+@media screen and (max-width: 600px) {
+  .neo-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .neo-container {
+    padding: 1rem;
+  }
+  .neo-title {
+    font-size: 1.3rem;
+  }
+  .neo-item {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
